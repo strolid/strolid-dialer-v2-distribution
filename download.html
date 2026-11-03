@@ -277,7 +277,44 @@
     </style>
 
     
-    
+    <style>
+      #it-only { margin: 2.2em auto 0; max-width: 560px; text-align: left; font-size: 0.9em; }
+      #it-only summary { cursor: pointer; color: #666; font-size: 0.85em; letter-spacing: 0.02em; text-transform: uppercase; }
+      #it-only summary:hover { color: #333; }
+      #it-only .it-warning { margin: 0.8em 0 1em; padding: 0.8em 1em; border-left: 4px solid #c47f00; background: #fff6e5; color: #4a3200; border-radius: 4px; line-height: 1.45; }
+      #it-only .it-warning b { color: #8a4b00; }
+      #it-only ul { list-style: none; padding: 0; margin: 0; }
+      #it-only li { margin: 0.45em 0; }
+      #it-only li a { font-weight: 600; }
+      #it-only li .what { color: #666; margin-left: 0.5em; }
+      #it-only #amd-title { display: none; }
+    </style>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        var opts = document.getElementById('windows-download-options');
+        var pane = document.getElementById('pane-win');
+        if (!opts || !pane) return;
+        var labels = { '.zip': 'portable copy, never updates itself', '.msix': 'Windows package, manual install', '.appinstaller': 'Windows package manifest' };
+        var list = document.createElement('ul');
+        opts.querySelectorAll('a').forEach(function (a) {
+          var li = document.createElement('li');
+          var key = Object.keys(labels).find(function (k) { return a.textContent.indexOf(k) >= 0; });
+          li.appendChild(a);
+          if (key) { var s = document.createElement('span'); s.className = 'what'; s.textContent = labels[key]; li.appendChild(s); }
+          list.appendChild(li);
+        });
+        var details = document.createElement('details');
+        details.id = 'it-only';
+        details.innerHTML =
+          '<summary>IT use only: alternative installers</summary>' +
+          '<div class="it-warning"><b>Not for agents.</b> These downloads are for IT staff setting up a managed machine. ' +
+          'The .zip is a portable copy that never updates itself. Agents should use the ' +
+          '<b>Install and launch</b> button at the top of this page. If you are not sure, close this and use that button.</div>';
+        details.appendChild(list);
+        opts.remove();
+        pane.appendChild(details);
+      });
+    </script>
 
 
 </head>
@@ -296,7 +333,7 @@
 
             <h1 id="title">Strolid Dialer v2</h1>
 
-            <span id="version">Version <span>2.16.10</span></span>
+            <span id="version">Version <span>2.16.11</span></span>
 
             <div id="pane-win">
                 
@@ -317,8 +354,8 @@
                     
                         <p class="smaller-fonts" style="line-height: 200%" id="windows-download-options">
                             <span id="amd-title">Intel: &nbsp;&nbsp;</span>
-                            <a href="https://github.com/strolid/strolid-dialer-v2-distribution/releases/latest/download/strolid-desktop-dialer-v2-2.16.10-windows-amd64.zip" download>Download .zip</a> &nbsp;&nbsp;
-                            <a href="https://github.com/strolid/strolid-dialer-v2-distribution/releases/latest/download/strolid-desktop-dialer-v2-2.16.10.x64.msix" download>Download .msix</a> &nbsp;&nbsp;
+                            <a href="https://github.com/strolid/strolid-dialer-v2-distribution/releases/latest/download/strolid-desktop-dialer-v2-2.16.11-windows-amd64.zip" download>Download .zip</a> &nbsp;&nbsp;
+                            <a href="https://github.com/strolid/strolid-dialer-v2-distribution/releases/latest/download/strolid-desktop-dialer-v2-2.16.11.x64.msix" download>Download .msix</a> &nbsp;&nbsp;
                             <a href="https://github.com/strolid/strolid-dialer-v2-distribution/releases/latest/download/strolid-desktop-dialer-v2.appinstaller" download>Download .appinstaller</a>
                         </p>
                     
@@ -352,7 +389,7 @@
                     <br><br>
 
                     <!-- Mac ARM -->
-                    <a id="mac-aarch64" href="https://github.com/strolid/strolid-dialer-v2-distribution/releases/latest/download/strolid-desktop-dialer-v2-2.16.10-mac-aarch64.zip" class="download-button">
+                    <a id="mac-aarch64" href="https://github.com/strolid/strolid-dialer-v2-distribution/releases/latest/download/strolid-desktop-dialer-v2-2.16.11-mac-aarch64.zip" class="download-button">
                         <svg width="2em" height="2em" viewBox="0 0 256 315" version="1.1" xmlns="http://www.w3.org/2000/svg"
                              xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" style="overflow:visible;">
                             <g transform="translate(0,-30)">
